@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {}
@@ -6,8 +7,11 @@ type Props = {}
 export default function Layout(props: any) {
     return (
         <>
-            <h1 className="text-rose-500 text-6xl">Book Store</h1>
-            {props.children}
+            <nav className='bg-sky-300 p-3 flex gap-3'>
+                <Link href='/' className='font-bold text-slate-800 hover:text-blue-700'>home</Link>
+                <Link href='/library' className='font-bold text-slate-800 hover:text-blue-700'>library</Link>
+            </nav>
+                {props.children}
         </>
     )
 }

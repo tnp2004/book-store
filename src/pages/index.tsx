@@ -6,7 +6,7 @@ type Props = {}
 export default function index({}: Props) {
   return (
     <Layout>
-      home page
+      <h1 className='text-rose-500 text-3xl'>Homepage</h1>
     </Layout>
   )
-}
+} 
