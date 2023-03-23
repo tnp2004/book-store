@@ -3,9 +3,14 @@ import React, { useContext, useState } from 'react'
 import { BooksObj, Item } from 'types/types'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 
 type Props = {
     data: BooksObj
+}
+
+type SearchParams = {
+    search: string
 }
 
 export default function Search({ data }: Props) {
@@ -36,7 +41,7 @@ export default function Search({ data }: Props) {
     )
 }
 
-export async function getStaticProps({params}: any) {
+export async function getStaticProps({ params }: GetStaticPropsContext<SearchParams>) {
 
     const data = await (await fetch(`http://localhost:3000/api/getBooks?search=${params?.search}`)).json()
 
@@ -48,12 +53,12 @@ export async function getStaticProps({params}: any) {
 }
 
 export async function getStaticPaths() {
-    
+
     const key = process.env.BOOK_API_KEY
     // const data = await (await (fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${key}`))).json()
 
     return {
-      paths: [{ params: { search: 'bird' } }],
-      fallback: false,
+        paths: [{ params: { search: 'cat' } }],
+        fallback: false,
     }
-  }
+}
