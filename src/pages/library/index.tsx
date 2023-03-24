@@ -1,7 +1,6 @@
 import Layout from 'components/Layout'
 import React, { useState } from 'react'
 import { BooksObj, Item } from 'types/types'
-import Image from 'next/image'
 import Book from 'components/Book'
 
 type Props = {
@@ -29,11 +28,11 @@ export default function Index({ data }: Props) {
                 </div>
                 {booksData ? (
                     //  have data
-                    <ul className='flex flex-wrap justify-center gap-12 mt-32'>
+                    <div className='flex flex-wrap justify-center gap-12 mt-32'>
                         {booksData.map((book: Item, index: number) => (
                            <Book key={index} book={book} />
                         ))}
-                    </ul>
+                    </div>
                 ): (
                     // no data
                     <div>no data</div>
