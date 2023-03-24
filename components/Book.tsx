@@ -13,9 +13,11 @@ export default function Book({ book }: Props) {
 
     return (
         <Link href={`/library/${book.id}`}>
-            <label>{book.volumeInfo.title}</label>
-            <div className='relative border-2 p-1 w-48 h-48'>
-                <Image src={`${book.volumeInfo.imageLinks?.smallThumbnail || defaultBookImage}`} alt={book.volumeInfo.title} className='mx-auto w-auto h-auto' fill={true} objectFit='contain' />
+            <div className='p-3 border-2 w-60 h-72 hover:bg-gradient-to-b from-cyan-300 to-blue-300'>
+                <label className='font-bold'>{book.volumeInfo.title}</label>
+                <div className='relative p-1 w-48 h-48 mx-auto my-2'>
+                    <Image priority src={`${book.volumeInfo.imageLinks?.smallThumbnail || defaultBookImage}`} alt={book.volumeInfo.title} className='mx-auto' fill={true} sizes='1' style={{objectFit: 'contain'}} />
+                </div>
             </div>
         </Link>
     )

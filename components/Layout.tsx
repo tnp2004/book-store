@@ -11,7 +11,7 @@ export default function Layout(props: any) {
                 <Link href='/' className='font-bold text-slate-800 hover:text-blue-700'>home</Link>
                 <Link href='/library' className='font-bold text-slate-800 hover:text-blue-700'>library</Link>
             </nav>
-                {props.children}
+            {props.children}
         </>
     )
 }
