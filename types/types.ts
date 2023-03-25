@@ -1,3 +1,18 @@
+export interface GenericObject<T> {
+    [ key: string ]: T
+}
+
+export interface PreviewBook {
+    id: string
+    title: string
+    authors: string[]
+    imageLinks?: Thumbnail
+}
+
+interface Thumbnail {
+    [ key:string ]: string
+}
+
 export interface BooksObj {
     kind: string
     totalItems: number

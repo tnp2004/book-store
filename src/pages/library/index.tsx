@@ -1,21 +1,23 @@
 import Layout from 'components/Layout'
 import React, { KeyboardEvent, useState } from 'react'
-import { BooksObj, Item } from 'types/types'
+import { GenericObject, PreviewBook } from 'types/types'
 import Book from 'components/Book'
 
+type ObjectPreviewBooks = GenericObject<PreviewBook[]>
+
 type Props = {
-    data: BooksObj
+    data: ObjectPreviewBooks
 }
 
-export default function Index({ data }: Props) {
+export default function Index({ data: { booksData } }: Props) {
 
-    const [booksData, setBooksData] = useState<Item[]>(data.items)
+    const [booksDataArray, setBooksData] = useState<PreviewBook[]>(booksData)
     const [searchValue, SetSearchValue] = useState<string>('')
 
 
     const searchBooks = async () => {
         const data = await (await fetch(`http://localhost:3000/api/getBooks?search=${searchValue}`)).json()
-        setBooksData(data.items)
+        setBooksData(data.booksData)
     }
 
     const isPressEnter = (event: KeyboardEvent, triggerFunc: Function) => {
@@ -31,10 +33,10 @@ export default function Index({ data }: Props) {
                 <div className='p-2 group w-max mx-auto'>
                     <input onKeyDown={(e) => isPressEnter(e, searchBooks)} id='search' type="text" className='border-2 group-hover:border-slate-800 rounded p-1' placeholder='search' onChange={(e) => SetSearchValue(e.target.value)} value={searchValue} />
                 </div>
-                {booksData ? (
+                {booksDataArray ? (
                     //  have data
                     <div className='flex flex-wrap justify-center gap-12 mt-32'>
-                        {booksData.map((book: Item, index: number) => (
+                        {booksDataArray.map((book: PreviewBook, index: number) => (
                             <Book key={index} book={book} />
                         ))}
                     </div>
