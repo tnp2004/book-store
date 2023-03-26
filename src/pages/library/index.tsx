@@ -2,6 +2,7 @@ import Layout from 'components/Layout'
 import React, { KeyboardEvent, useState } from 'react'
 import { GenericObject, PreviewBook } from 'types/types'
 import Book from 'components/Book'
+import { Suspense } from 'react'
 
 type ObjectPreviewBooks = GenericObject<PreviewBook[]>
 

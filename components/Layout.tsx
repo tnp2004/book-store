@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import Loading from '../components/Loading'
 
 type Props = {}
 
@@ -12,6 +12,8 @@ export default function Layout(props: any) {
                 <Link href='/library' className='font-bold text-slate-800 hover:text-blue-700'>library</Link>
             </nav>
             {props.children}
+            
+            <Loading />
         </>
     )
 }
