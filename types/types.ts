@@ -2,6 +2,17 @@ export interface GenericObject<T> {
     [ key: string ]: T
 }
 
+export interface BookInformation {
+    title: string
+    authors: string
+    publisher: string
+    description: string
+    pageCount: number
+    categories: string[]
+    imageLinks?: Thumbnail
+    infoLink: string
+}
+// title, authors, publisher, description, pagCount, categories, imageLinks, infolink
 export interface PreviewBook {
     id: string
     title: string

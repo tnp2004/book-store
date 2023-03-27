@@ -2,8 +2,6 @@ import Link from 'next/link'
 import Loading from '../components/Loading'
 import Head from 'next/head'
 
-type Props = {}
-
 // this file is for Navbar
 export default function Layout(props: any) {
     return (
