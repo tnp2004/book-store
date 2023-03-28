@@ -14,7 +14,6 @@ export default function Index({ data: { booksData } }: Props) {
     const [booksDataArray, setBooksData] = useState<PreviewBook[]>(booksData)
     const [searchValue, SetSearchValue] = useState<string>('')
 
-
     const searchBooks = async () => {
         const data = await (await fetch(`http://localhost:3000/api/getBooks?search=${searchValue}`)).json()
         setBooksData(data.booksData)
@@ -35,7 +34,7 @@ export default function Index({ data: { booksData } }: Props) {
                 </div>
                 {booksDataArray ? (
                     //  have data
-                    <div className='flex flex-wrap justify-center gap-12 mt-32'>
+                    <div className='flex flex-wrap justify-center gap-12 mt-12'>
                         {booksDataArray.map((book: PreviewBook, index: number) => (
                             <Book key={index} book={book} />
                         ))}
@@ -51,7 +50,8 @@ export default function Index({ data: { booksData } }: Props) {
 
 export async function getStaticProps() {
 
-    const data = await (await fetch('http://localhost:3000/api/getBooks')).json()
+    const searchDefault = 'cat'
+    const data = await (await fetch(`http://localhost:3000/api/getBooks?search=${searchDefault}`)).json()
 
     return {
         props: {

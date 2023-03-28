@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 type Props = {}
 
@@ -24,9 +25,23 @@ export default function Loader({ }: Props) {
           </div>
           <div className="spoke"></div>
         </div>
+        <motion.h1 className='text-center text-3xl my-2'
+          animate={{
+            opacity: [.2, .5, .8, 1, .8, .5, .2]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity
+          }}
+        >Loading...</motion.h1>
 
         <style jsx>
           {`
+                    @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@500&display=swap');
+                    * {
+                      font-family: 'Shantell Sans', cursive;
+                    }
+
                     .wheel-and-hamster {
                         --dur: 1s;
                         position: relative;

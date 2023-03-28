@@ -12,7 +12,6 @@ export interface BookInformation {
     imageLinks?: Thumbnail
     infoLink: string
 }
-// title, authors, publisher, description, pagCount, categories, imageLinks, infolink
 export interface PreviewBook {
     id: string
     title: string
