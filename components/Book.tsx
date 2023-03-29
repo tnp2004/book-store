@@ -1,8 +1,8 @@
-import React from 'react'
-import Image from 'next/image'
 import { PreviewBook } from 'types/types'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
 type Props = {
     book: PreviewBook
@@ -21,7 +21,7 @@ export default function Book({ book }: Props) {
                 zIndex: 1,
                 scale: [1, 1.4, 1.2],
                 transition: {
-                    duration: .2
+                    duration: .15
                 }
             }}>
                 <label className='font-bold'>{title}</label>

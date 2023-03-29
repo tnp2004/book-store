@@ -1,6 +1,6 @@
 import Loading from '../components/Loading'
-import Head from 'next/head'
 import Navbar from './Navbar'
+import Head from 'next/head'
 
 // this file is for Navbar
 export default function Layout(props: any) {

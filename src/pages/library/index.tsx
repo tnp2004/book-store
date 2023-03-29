@@ -1,6 +1,6 @@
-import Layout from 'components/Layout'
-import React, { KeyboardEvent, useState } from 'react'
 import { GenericObject, PreviewBook } from 'types/types'
+import React, { KeyboardEvent, useState } from 'react'
+import Layout from 'components/Layout'
 import Book from 'components/Book'
 
 type ObjectPreviewBooks = GenericObject<PreviewBook[]>
