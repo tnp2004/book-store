@@ -25,5 +25,6 @@ export default async function getBookById(req: NextApiRequest, res: NextApiRespo
 
     } catch(e) {
         console.error(e)
+        res.status(500).json('Oops! error has occurred')
     }
 }

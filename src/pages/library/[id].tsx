@@ -22,16 +22,26 @@ export default function BookInfo({ data: { bookData } }: Props) {
                     <Image priority src={`${imageLinks?.thumbnail || defaultBookImage}`} alt={title} className='mx-auto p-5' fill={true} sizes='1' style={{ objectFit: 'contain' }} />
                 </div>
                 <div className='w-full xl:w-2/4 bg-slate-100 py-5 px-4 rounded-b-xl xl:rounded-r-xl xl:rounded-l-none'>
-                    <p className='font-bold text-2xl'>{title}</p>
-                    <p><label className='font-bold'>Authors:</label> {authors}</p>
-                    <p><label className='font-bold'>Publisher:</label> {publisher}</p>
-                    <p><label className='font-bold'>Page:</label> {pageCount} pages</p>
-                    <p><label className='font-bold'>Categories:</label> {categories}</p>
-                    <p><label className='font-bold'>Information:</label> <a href={infoLink}>{infoLink}</a></p>
-                    <p>
-                        <label className='font-bold' htmlFor="description">Description: </label>
-                        <p className='inline' dangerouslySetInnerHTML={{ __html: description }}></p>
-                    </p>
+                    <section className='font-bold text-2xl text-slate-900 my-3'>{title}</section>
+                    <section className='text-slate-700'>
+                        <label className='font-bold text-slate-900'>Authors:</label> {authors}
+                    </section>
+                    <section className='text-slate-700'>
+                        <label className='font-bold text-slate-900'>Publisher:</label>
+                        {publisher}</section>
+                    <section className='text-slate-700'>
+                        <label className='font-bold text-slate-900'>Page:</label>
+                        {pageCount} pages</section>
+                    <section className='text-slate-700'>
+                        <label className='font-bold text-slate-900'>Categories:</label>
+                        {categories}</section>
+                    <section className='text-blue-800'>
+                        <label className='font-bold text-slate-900'>Information:</label>
+                        <a className='underline' href={infoLink}>{infoLink}</a></section>
+                    <section className='text-slate-700'>
+                        <label className='font-bold text-slate-900' htmlFor="description">Description: </label>
+                        <div className='inline' dangerouslySetInnerHTML={{ __html: description }}></div>
+                    </section>
                 </div>
             </div>
         </Layout>
