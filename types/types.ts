@@ -2,6 +2,10 @@ export interface GenericObject<T> {
     [ key: string ]: T
 }
 
+export interface ErrorMessage {
+    errorMessage: string
+}
+
 export interface BookInformation {
     title: string
     authors: string

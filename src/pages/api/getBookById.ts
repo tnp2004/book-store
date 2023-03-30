@@ -24,7 +24,9 @@ export default async function getBookById(req: NextApiRequest, res: NextApiRespo
         res.json(jsonData)
 
     } catch(e) {
-        console.error(e)
-        res.status(500).json('Oops! error has occurred')
+        const errorData = await new Object ({
+            errorMessage: "Something went wrong. Please try again later"
+        })
+        res.status(500).json(errorData)
     }
 }
