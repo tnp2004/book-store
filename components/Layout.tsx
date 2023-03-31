@@ -2,8 +2,8 @@ import Loading from '../components/Loading'
 import Navbar from './Navbar'
 import Head from 'next/head'
 
-// this file is for Navbar
 export default function Layout(props: any) {
+
     return (
         <>
             <Head>

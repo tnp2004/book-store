@@ -5,7 +5,6 @@ import Loader from './Loader'
 type Props = {}
 
 // loading for move page to page
-// not effective with child of main page(look at pathname)
 export default function Loading({ }: Props): any {
     const router = useRouter()
     const [loading, setLoading] = useState(false)

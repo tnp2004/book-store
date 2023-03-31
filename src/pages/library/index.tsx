@@ -32,7 +32,7 @@ export default function Index({ data }: Props) {
             <Layout>
                 <div className="text-center h-screen">
                     <h1 className='text-rose-500 text-3xl'>Library page</h1>
-                    <div className='p-2 group w-max mx-auto'>
+                    <div className='p-2 group w-max mx-auto my-5'>
                         <input onKeyDown={(e) => isPressEnter(e, searchBooks)} id='search' type="text" className='border-2 group-hover:border-slate-800 rounded p-1' placeholder='search' onChange={(e) => SetSearchValue(e.target.value)} value={searchValue} />
                     </div>
 
