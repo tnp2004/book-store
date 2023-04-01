@@ -5,11 +5,11 @@ export default async function addUser (req: NextApiRequest, res: NextApiResponse
    try {
        const client = await clientPromise;
        const db = client.db("users");
-       const { name, age } = req.body
+       const { email, username, password } = req.body
 
        const user = await db
            .collection("user_data")
-           .insertOne({ name, age })
+           .insertOne({ email, username, password })
 
        res.json(user);
    } catch (e) {
