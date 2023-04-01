@@ -1,16 +1,17 @@
-import clientPromise from "lib";
+import clientPromise from "lib/mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function test (req: NextApiRequest, res: NextApiResponse) {
+export default async function getUsers (req: NextApiRequest, res: NextApiResponse) {
    try {
        const client = await clientPromise;
        const db = client.db("users");
 
-       const movies = await db
+       const users = await db
            .collection("user_data")
-           .insertOne({name: 'ice', age: 18})
+           .find({})
+           .toArray()
 
-       res.json(movies);
+       res.json(users);
    } catch (e) {
        console.error(e);
    }
