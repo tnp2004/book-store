@@ -1,17 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { WithId, Document } from "mongodb";
 import clientPromise from "lib/mongodb";
-import { ObjectId } from "mongodb";
-
-interface Userdata {
-    _id: ObjectId
-    email: string
-    username: string
-    password: string
-}
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
-
-    const validationLogin = (loginEmail: string, loginPassword: string, userData: Userdata) => {
+    
+    const validationLogin = (loginEmail: string, loginPassword: string, userData: WithId<Document>) => {
         const emailValidate = loginEmail === userData.email
         const passwordValidate = loginPassword === userData.password
 
@@ -47,11 +40,13 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
 
         // no user
         res.json({
-            status: 'user not found'
+            status: 'error',
+            message: 'invalid data'
         })
     } catch (e) {
         res.json({
-            status: 'Something went wrong'
+            status: 'error',
+            message: 'something went wrong'
         })
         console.error(e);
     }
