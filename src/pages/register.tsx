@@ -1,6 +1,6 @@
 import Layout from 'components/Layout'
 import Link from 'next/link'
-import { FormEvent, useState } from 'react'
+import { FormEvent, FormEventHandler, useState } from 'react'
 
 type Props = {}
 
@@ -11,7 +11,7 @@ export default function Register({ }: Props) {
   const [password, setPassword] = useState<string>('')
   const [errorMessage, setErrorMessage] = useState<string>('')
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (email.trim() && username.trim() && password.trim()) {

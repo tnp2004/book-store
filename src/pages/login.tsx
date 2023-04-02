@@ -1,40 +1,57 @@
 import Layout from 'components/Layout'
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import React from 'react'
+import React, { FormEvent, FormEventHandler, useState } from 'react'
 
 type Props = {}
 
 export default function Login({ }: Props) {
+
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    // sent data to credentials parameter from [...nextauth].ts
+    await signIn('credentials', {
+      email,
+      password
+    })
+
+    window.location.pathname= '/'
+  }
+
   return (
     <Layout>
-        <form className="form m-auto text-center my-24">
-          <p className="form-title my-3">Login to your account</p>
-          <div className="input-container">
-            <input placeholder="Email" type="email" />
-            <span>
-              <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"></path>
-              </svg>
-            </span>
-          </div>
-          <div className="input-container">
-            <input placeholder="Password" type="password" />
-            <span>
-              <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"></path>
-                <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"></path>
-              </svg>
-            </span>
-          </div>
-          <button className="submit" type="submit">
-            Login
-          </button>
+      <form onSubmit={handleSubmit} className="form m-auto text-center my-24">
+        <p className="form-title my-3">Login to your account</p>
+        <div className="input-container">
+          <input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
+          <span>
+            <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"></path>
+            </svg>
+          </span>
+        </div>
+        <div className="input-container">
+          <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+          <span>
+            <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"></path>
+              <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"></path>
+            </svg>
+          </span>
+        </div>
+        <button className="submit" type="submit">
+          Login
+        </button>
 
-          <p className="signup-link">
-            No account?
-            <Link className='underline' href="/register"> Register</Link>
-          </p>
-        </form>
+        <p className="signup-link">
+          No account?
+          <Link className='underline' href="/register"> Register</Link>
+        </p>
+      </form>
 
       <style jsx>
         {`
