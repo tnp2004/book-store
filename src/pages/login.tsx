@@ -1,5 +1,5 @@
 import Layout from 'components/Layout'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React, { FormEvent, FormEventHandler, useState } from 'react'
 
@@ -7,6 +7,7 @@ type Props = {}
 
 export default function Login({ }: Props) {
 
+  const { data: session } = useSession()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
@@ -18,9 +19,9 @@ export default function Login({ }: Props) {
       email,
       password
     })
-
-    window.location.pathname= '/'
   }
+
+  if (session) window.location.pathname = '/'
 
   return (
     <Layout>

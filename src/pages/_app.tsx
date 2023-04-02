@@ -18,7 +18,7 @@ export default function App({ Component, pageProps: { session, ...pageProps }, r
     //   <Component {...pageProps} />
     // </motion.div>
 
-    <SessionProvider session={session}>
+    <SessionProvider session={pageProps.session}>
       <Component {...pageProps} />
     </SessionProvider>
   )
