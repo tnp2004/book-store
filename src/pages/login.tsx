@@ -19,7 +19,6 @@ export default function Login({ }: Props) {
           </div>
           <div className="input-container">
             <input placeholder="Password" type="password" />
-
             <span>
               <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"></path>

@@ -6,18 +6,19 @@ type Props = {}
 
 export default function Register({ }: Props) {
 
-  const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [message, setMessage] = useState('')
+  const [email, setEmail] = useState<string>('')
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (email.trim() && username.trim() && password) {
+    if (email.trim() && username.trim() && password.trim()) {
       try {
 
-        const response = await fetch(`http://localhost:3000/api/addUser`, {
+        // insert data
+        await fetch(`http://localhost:3000/api/addUser`, {
           method: 'POST',
           body: JSON.stringify({
             email,
@@ -30,20 +31,23 @@ export default function Register({ }: Props) {
           }
         })
 
-        setMessage('Your registered successfully')
-        inputReset()
+        // reset form fields
+        formReset()
+
+        // redirect to login page
+        window.location.pathname = '/login'
 
       } catch (e) {
-        setMessage('Somthing went wrong!, Please try again')
+        setErrorMessage('Something went wrong!, Please try again')
         console.error(e)
       }
     } else {
-      setMessage('Please fill all fields')
+      setErrorMessage('You must fill in all fields')
     }
 
   }
 
-  const inputReset = () => {
+  const formReset = () => {
     setEmail('')
     setUsername('')
     setPassword('')
@@ -53,6 +57,7 @@ export default function Register({ }: Props) {
     <Layout>
       <form onSubmit={handleSubmit} className="form m-auto text-center my-24">
         <p className="form-title my-3">Create your account</p>
+        <label htmlFor='error-message'  className='text-rose-500 font-bold'>{errorMessage}</label>
         <div className="input-container">
           <input placeholder="Email address" name="email" type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
           <span>
