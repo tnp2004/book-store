@@ -3,7 +3,7 @@ import { WithId, Document } from "mongodb";
 import clientPromise from "lib/mongodb";
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
-    
+
     const validationLogin = (loginEmail: string, loginPassword: string, userData: WithId<Document>) => {
         const emailValidate = loginEmail === userData.email
         const passwordValidate = loginPassword === userData.password
@@ -11,9 +11,10 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         if (emailValidate && passwordValidate) {
             res.json({
                 status: 'ok',
-                user: userData 
+                message: 'Logged in',
+                user: userData
             })
-            
+
             return
         }
 
@@ -29,14 +30,17 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         const db = client.db("users");
         const { email, password } = req.body
 
-        const user = await db
-            .collection("user_data")
-            .findOne({ email })
-
-        if (user) {
-            validationLogin(email, password, user)
-            return
+        if (email && password) {
+            const user = await db
+                .collection("user_data")
+                .findOne({ email })
+                
+            if (user) {
+                validationLogin(email, password, user)
+                return
+            }
         }
+
 
         // no user
         res.json({

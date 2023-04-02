@@ -1,25 +1,26 @@
 import CredentialsProvider from "next-auth/providers/credentials"
-import NextAuth from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                username: { label: "Username", type: "text" },
+                email: { label: "Email", type: "text" },
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-                const res = await fetch("/your/endpoint", {
+                const res = await fetch("http://localhost:3000/api/login", {
                     method: 'POST',
-                    body: JSON.stringify(credentials),
+                    body: JSON.stringify({ email: credentials?.email, password: credentials?.password}),
                     headers: { "Content-Type": "application/json" }
                 })
-                const user = await res.json()
+                const data = await res.json()
 
-                if (res.ok && user) { 
-                    return user
+                if (data.status === 'ok') {
+                    return data.user
                 }
+
                 return null
             }
         })
