@@ -34,16 +34,7 @@ export const authOptions: NextAuthOptions = {
         signIn: '/login'
     },
     callbacks: {
-        session: async ({ session }) => {
-            // const user = await fetch('https//localhost:3000', {
-            //     method: 'POST',
-            //     body: JSON.stringify({ id: '642969f975e49ed2ff8bf538'}),
-            //     headers: {
-            //         Accept: 'application/json, text/plain, */*',
-            //         "Content-Type": "application/json"
-            //     }
-            // })
-            // session.user = user.json()
+        session({ session }) {
             return session // The return type will match the one returned in `useSession()`
         },
     },
