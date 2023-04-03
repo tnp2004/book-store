@@ -11,7 +11,8 @@ export default function Index({ }: Props) {
   return (
     <Layout>
       <h1 className='text-rose-500 text-3xl'>Homepage</h1>
-      { data && <h2>welcome {data.user?.email}</h2>}
+      { data && <h2>welcome {data.user?.username}</h2>}
+      {JSON.stringify(data?.user)}
     </Layout>
   )
 } 

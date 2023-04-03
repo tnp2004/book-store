@@ -1,9 +1,17 @@
 import CredentialsProvider from "next-auth/providers/credentials"
 import NextAuth, { NextAuthOptions } from "next-auth"
+import clientPromise from "lib/mongodb"
+import { WithId, Document } from "mongodb"
 
 type UserLogin = {
     email: string,
     password: string
+}
+
+type a = {
+    id: string
+    email: string
+    name: string
 }
 
 export const authOptions: NextAuthOptions = {
@@ -34,7 +42,22 @@ export const authOptions: NextAuthOptions = {
         signIn: '/login'
     },
     callbacks: {
-        session({ session }) {
+        session: async ({ session }) => {
+            const client = await clientPromise;
+            const db = client.db("users");
+     
+            const user = await db
+                .collection("user_data")
+                .findOne({ email: session.user?.email}) as WithId<Document>
+            
+            const { _id, email, username } = user
+
+            session.user = { 
+                id: _id,
+                email,
+                username
+            }
+
             return session // The return type will match the one returned in `useSession()`
         },
     },

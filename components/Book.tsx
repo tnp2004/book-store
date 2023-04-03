@@ -21,7 +21,7 @@ export default function Book({ book }: Props) {
                 zIndex: 1,
                 scale: [1, 1.4, 1.2],
                 transition: {
-                    duration: .15
+                    duration: .2
                 }
             }}>
                 <label className='font-bold'>{title}</label>

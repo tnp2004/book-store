@@ -1,3 +1,19 @@
+import { ObjectId, WithId } from "mongodb"
+import NextAuth from "next-auth"
+
+declare module "next-auth" {
+  /**
+   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+   */
+  interface Session {
+    user: {
+        id: ObjectId
+        email: string
+        username: string
+    }
+  }
+}
+
 export interface GenericObject<T> {
     [ key: string ]: T
 }
