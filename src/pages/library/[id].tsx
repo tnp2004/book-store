@@ -20,7 +20,7 @@ export default function BookInfo({ data }: Props) {
 
         return (
             <Layout>
-                <div className='flex flex-col xl:flex-row justify-center p-3'>
+                <div className='flex flex-col xl:flex-row justify-center p-3 drop-shadow-md'>
                     <div className='relative w-full h-96 rounded-t-xl xl:w-1/4 xl:h-auto xl:rounded-l-xl xl:rounded-r-none bg-slate-200'>
                         <Image priority src={`${imageLinks?.thumbnail || defaultBookImage}`} alt={title} className='mx-auto p-5' fill={true} sizes='1' style={{ objectFit: 'contain' }} />
                     </div>

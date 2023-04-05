@@ -1,9 +1,10 @@
+import Layout from 'components/Layout'
 import React from 'react'
 
 type Props = {}
 
 export default function Profile({}: Props) {
   return (
-    <div>profile</div>
+    <Layout>profile</Layout>
   )
 }
