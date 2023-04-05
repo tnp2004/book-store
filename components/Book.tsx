@@ -16,7 +16,7 @@ export default function Book({ book }: Props) {
 
     return (
         <Link href={`/library/${id}`}>
-            <motion.div className='p-3 border-2 w-60 h-72 rounded-md box-content flex flex-col justify-between bg-slate-50' whileHover={{
+            <motion.div className='p-3 w-60 h-72 rounded-md box-content flex flex-col justify-between drop-shadow-md bg-gradient-to-br from-white to-slate-100' whileHover={{
                 position: 'relative',
                 zIndex: 1,
                 scale: [1, 1.4, 1.2],

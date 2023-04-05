@@ -55,7 +55,7 @@ export default function Dropdowns() {
                                 <Menu.Button
                                     onClick={() => signOut()}
                                     className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        active ? 'bg-gray-100 text-rose-700' : 'text-gray-700',
                                         'block px-2 py-2 text-sm w-full text-start'
                                     )}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline-block mx-1">

@@ -1,4 +1,5 @@
 import Layout from 'components/Layout'
+import Nopermission from 'components/Nopermission'
 import { useSession } from 'next-auth/react'
 import React from 'react'
 
@@ -14,7 +15,5 @@ export default function Protected({ }: Props) {
         )
     }
 
-    return (
-        <Layout>your not authenticated</Layout>
-    )
+    return  <Nopermission />
 }
