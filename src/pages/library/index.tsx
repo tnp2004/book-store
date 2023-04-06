@@ -30,24 +30,23 @@ export default function Index({ data }: Props) {
     if (booksData) {
         return (
             <Layout>
-                    <div className="text-center h-screen">
-                        <h1 className='text-rose-500 text-3xl'>Library page</h1>
-                        <div className='p-2 group w-max mx-auto my-8'>
-                            <input onKeyDown={(e) => isPressEnter(e, searchBooks)} id='search' type="text" className='border-2 group-hover:border-slate-800 rounded p-1' placeholder='search' onChange={(e) => SetSearchValue(e.target.value)} value={searchValue} />
-                        </div>
-
-                        {booksDataArray ? (
-                            //  have data
-                            <div className='flex flex-wrap justify-center gap-12'>
-                                {booksDataArray.map((book: PreviewBook, index: number) => (
-                                    <Book key={index} book={book} />
-                                ))}
-                            </div>
-                        ) : (
-                            // no data
-                            <div className='text-slate-500'>no data</div>
-                        )}
+                <div className="text-center h-screen">
+                    <div className='p-2 group w-1/3 mx-auto my-8'>
+                        <input className='border-2 group-hover:border-slate-800 rounded p-1 w-full' onKeyDown={(e) => isPressEnter(e, searchBooks)} id='search' type="text" placeholder='search' onChange={(e) => SetSearchValue(e.target.value)} value={searchValue} />
                     </div>
+
+                    {booksDataArray ? (
+                        //  have data
+                        <div className='flex flex-wrap justify-center gap-12'>
+                            {booksDataArray.map((book: PreviewBook, index: number) => (
+                                <Book key={index} book={book} />
+                            ))}
+                        </div>
+                    ) : (
+                        // no data
+                        <div className='text-slate-500'>no data</div>
+                    )}
+                </div>
             </Layout>
         )
     }

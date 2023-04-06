@@ -35,7 +35,7 @@ export default function Dropdowns() {
                         <Menu.Item>
                             {({ active }) => (
                                 <Link
-                                    href="/user/profile"
+                                    href="/user"
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-2 py-2 text-sm font-bold'

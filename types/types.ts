@@ -2,20 +2,23 @@ import { ObjectId, WithId } from "mongodb"
 import NextAuth from "next-auth"
 
 declare module "next-auth" {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
-  interface Session {
-    user: {
-        id: ObjectId
-        email: string
-        username: string
-    }
+    /**
+     * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+     */
+    interface Session {
+        user: UserForm 
   }
 }
 
+export interface UserForm {
+    id: ObjectId
+    email: string
+    username: string
+    password?: string
+}
+
 export interface GenericObject<T> {
-    [ key: string ]: T
+    [key: string]: T
 }
 
 export interface ErrorMessage {
@@ -40,7 +43,7 @@ export interface PreviewBook {
 }
 
 interface Thumbnail {
-    [ key:string ]: string
+    [key: string]: string
 }
 
 export interface BooksObj {
