@@ -39,8 +39,9 @@ export default async function password(req: NextApiRequest, res: NextApiResponse
 
             return
         }
+        
         if (!passwordValidate) {
-            // invalid email and password
+            // invalid password
             res.json({
                 status: 'error',
                 message: 'Your current password is invalid'
@@ -78,13 +79,13 @@ export default async function password(req: NextApiRequest, res: NextApiResponse
         // no user
         res.json({
             status: 'error',
-            message: 'invalid data'
+            message: 'Please fill in all fields'
         })
 
     } catch (e) {
         res.json({
             status: 'error',
-            message: 'something went wrong'
+            message: 'Something went wrong'
         })
         console.error(e);
     }

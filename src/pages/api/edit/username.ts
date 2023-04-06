@@ -80,13 +80,13 @@ export default async function username(req: NextApiRequest, res: NextApiResponse
         // no user
         res.json({
             status: 'error',
-            message: 'invalid data'
+            message: 'Please fill in all fields'
         })
 
     } catch (e) {
         res.json({
             status: 'error',
-            message: 'something went wrong'
+            message: 'Something went wrong'
         })
         console.error(e);
     }

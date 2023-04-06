@@ -10,6 +10,11 @@ declare module "next-auth" {
   }
 }
 
+export interface alert {
+    status: 'ok' | 'error'
+    message: string
+}
+
 export interface UserForm {
     id: ObjectId
     email: string

@@ -4,6 +4,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
 
+.ok {
+    @apply text-emerald-500
+}
+
+.error {
+    @apply text-rose-600
+}
+
 body {
     font-family: 'Assistant', sans-serif;
     background-color: #f1f5f9;
