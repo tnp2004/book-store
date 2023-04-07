@@ -36,7 +36,7 @@ export default async function username(req: NextApiRequest, res: NextApiResponse
                 status: 'error',
                 message: 'Your password is invalid'
             })
-            
+
             return
         }
 
@@ -56,14 +56,18 @@ export default async function username(req: NextApiRequest, res: NextApiResponse
     }
 
     try {
-        const client = await clientPromise;
-        const db = client.db("users");
         const { id, username, password } = req.body
 
         if (username && password) {
-            const user = await db
-                .collection("user_data")
-                .findOne({ _id: new ObjectId(id) })
+            const user = await (await fetch('http://localhost:3000/api/getUser', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id
+                }), headers: {
+                    Accept: 'application/json, text/plain, */*',
+                    "Content-Type": "application/json"
+                }
+            })).json()
 
             if (user) {
                 const validateResult = validationEditUsername(username, password, user)

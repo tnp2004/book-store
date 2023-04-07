@@ -39,7 +39,7 @@ export default async function password(req: NextApiRequest, res: NextApiResponse
 
             return
         }
-        
+
         if (!passwordValidate) {
             // invalid password
             res.json({
@@ -55,14 +55,18 @@ export default async function password(req: NextApiRequest, res: NextApiResponse
     }
 
     try {
-        const client = await clientPromise;
-        const db = client.db("users");
         const { id, currentPassword, newPassword } = req.body
 
         if (currentPassword && newPassword) {
-            const user = await db
-                .collection("user_data")
-                .findOne({ _id: new ObjectId(id) })
+            const user = await (await fetch('http://localhost:3000/api/getUser', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id
+                }), headers: {
+                    Accept: 'application/json, text/plain, */*',
+                    "Content-Type": "application/json"
+                }
+            })).json()
 
             if (user) {
                 const validateResult = validationEditPassword(currentPassword, newPassword, user)
