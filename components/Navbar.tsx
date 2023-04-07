@@ -15,18 +15,11 @@ export default function Navbar({ }: Props) {
                     <Link href='/' className='font-bold text-slate-800 hover:text-emerald-900'>BOOKSTORE</Link>
                 </div>
                 <div className='flex gap-4 '>
-                    <Link href='/library' className='font-bold text-slate-800 hover:text-emerald-900'>library</Link>
+                    <Link href='/library' className='font-bold text-slate-800 hover:text-emerald-900'>Library</Link>
+                    <Link href='/community' className='font-bold text-slate-800 hover:text-emerald-900'>Community</Link>
+
                     {session ? (
                         // now login
-                        // <button classNameName='relative group text-slate-800'>
-                        //     image
-
-                        //     {/* hamburger menu */}
-                        //     <ul classNameName='absolute right-1 top-9 bg-slate-100 px-4 py-2 rounded hidden group-focus:block'>
-                        //         <Link classNameName='hover:underline py-1' href='/user/profile'>Profile</Link>
-                        //         <li classNameName='hover:underline py-1' onClick={() => signOut()}>Logout</li>
-                        //     </ul>
-                        // </button>
                        <Dropdowns />
 
                     ) : (

@@ -63,7 +63,8 @@ export default async function username(req: NextApiRequest, res: NextApiResponse
                 method: 'POST',
                 body: JSON.stringify({
                     id
-                }), headers: {
+                }),
+                headers: {
                     Accept: 'application/json, text/plain, */*',
                     "Content-Type": "application/json"
                 }

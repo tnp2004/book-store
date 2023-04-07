@@ -31,16 +31,20 @@ export default function BookInfo({ data }: Props) {
                         </section>
                         <section className='text-slate-700'>
                             <label className='font-bold text-slate-900'>Publisher: </label>
-                            {publisher}</section>
+                            {publisher}
+                        </section>
                         <section className='text-slate-700'>
                             <label className='font-bold text-slate-900'>Page: </label>
-                            {pageCount} pages</section>
+                            {pageCount} pages
+                        </section>
                         <section className='text-slate-700'>
                             <label className='font-bold text-slate-900'>Categories: </label>
-                            {categories}</section>
+                            {categories}
+                        </section>
                         <section className='text-blue-800'>
                             <label className='font-bold text-slate-900'>Information: </label>
-                            <a className='underline' href={infoLink}>{infoLink}</a></section>
+                            <a className='underline' href={infoLink}>{infoLink}</a>
+                        </section>
                         <section className='text-slate-700'>
                             <label className='font-bold text-slate-900' htmlFor="description">Description: </label>
                             <div className='inline' dangerouslySetInnerHTML={{ __html: description }}></div>
