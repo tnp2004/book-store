@@ -1,4 +1,4 @@
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn } from "next-auth/react"
 import Link from 'next/link'
 import React from 'react'
 import Dropdowns from "./Dropdowns"
@@ -18,7 +18,7 @@ export default function Navbar({ }: Props) {
                     <Link href='/library' className='font-bold text-slate-800 hover:text-emerald-900'>Library</Link>
                     <Link href='/community' className='font-bold text-slate-800 hover:text-emerald-900'>Community</Link>
 
-                    {session ? (
+                    {session ? ( 
                         // now login
                        <Dropdowns />
 
