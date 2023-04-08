@@ -10,6 +10,14 @@ declare module "next-auth" {
   }
 }
 
+export interface Post {
+    title: string
+    comment: string
+    owner: string
+    bookname: string
+    image: string
+}
+
 export interface alert {
     status: 'ok' | 'error'
     message: string

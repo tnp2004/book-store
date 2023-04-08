@@ -3,6 +3,8 @@ import { GetServerSidePropsContext } from 'next'
 import Layout from 'components/Layout'
 import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 type ObjectBookInfo = GenericObject<BookInformation>
 
@@ -14,6 +16,8 @@ export default function BookInfo({ data }: Props) {
 
     const { bookData } = data
     const defaultBookImage = 'https://images.unsplash.com/photo-1611915387288-fd8d2f5f928b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80'
+    const router = useRouter()
+    const { id } = router.query
 
     if (bookData) {
         const { title, authors, publisher, description, pageCount, categories, imageLinks, infoLink } = bookData
@@ -24,7 +28,8 @@ export default function BookInfo({ data }: Props) {
                     <div className='relative w-full h-96 rounded-t-xl xl:w-1/4 xl:h-auto xl:rounded-l-xl xl:rounded-r-none bg-slate-200'>
                         <Image priority src={`${imageLinks?.thumbnail || defaultBookImage}`} alt={title} className='mx-auto p-5' fill={true} sizes='1' style={{ objectFit: 'contain' }} />
                     </div>
-                    <div className='w-full xl:w-2/4 bg-slate-100 py-5 px-4 rounded-b-xl xl:rounded-r-xl xl:rounded-l-none'>
+                    <div className='relative w-full xl:w-2/4 bg-slate-100 py-5 px-4 rounded-b-xl xl:rounded-r-xl xl:rounded-l-none'>
+                        <Link className='absolute top-2 right-4 px-1 bg-emerald-200 hover:bg-emerald-300 hover:text-white drop-shadow-sm' href={`/post/${id}`}>Post</Link>
                         <section className='font-bold text-2xl text-slate-900 my-3'>{title}</section>
                         <section className='text-slate-700'>
                             <label className='font-bold text-slate-900'>Authors: </label> {authors}
