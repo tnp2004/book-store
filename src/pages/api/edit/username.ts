@@ -4,7 +4,7 @@ import clientPromise from "lib/mongodb";
 
 export default async function username(req: NextApiRequest, res: NextApiResponse) {
 
-    const updateUsername = async (username: string, id: string) => {
+    const updateUsername = async (username: string, id: string, userData: WithId<Document>) => {
 
         try {
 
@@ -13,6 +13,11 @@ export default async function username(req: NextApiRequest, res: NextApiResponse
             const user = await db
                 .collection('user_data')
                 .updateOne({ _id: new ObjectId(id) }, { $set: { username } })
+
+            const postdb = client.db("posts")
+            const postUsername = await postdb
+                .collection('post_data')
+                .updateMany({ owner: userData.username}, { $set: { owner: username }})
 
             if (user) {
                 res.json({
@@ -74,7 +79,7 @@ export default async function username(req: NextApiRequest, res: NextApiResponse
                 const validateResult = validationEditUsername(username, password, user)
 
                 if (validateResult) {
-                    updateUsername(username, id)
+                    updateUsername(username, id, user)
 
                     return
                 }

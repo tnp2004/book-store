@@ -10,7 +10,7 @@ declare module "next-auth" {
   }
 }
 
-export interface Post {
+export interface CommunityPost {
     title: string
     comment: string
     owner: string
