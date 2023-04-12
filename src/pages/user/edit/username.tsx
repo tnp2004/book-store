@@ -30,6 +30,8 @@ export default function Username({ }: Props) {
                 }
             })).json()
 
+            if (responseData.status === 'ok') window.location.pathname = '/user'
+
             setAlertData(responseData)
         } catch {
             console.error('Something went wrong')
@@ -44,11 +46,11 @@ export default function Username({ }: Props) {
                     <div className='mt-5'>
                         <section className='py-2'>
                             <label className='text-end font-bold' htmlFor="new_username">New username</label>
-                            <input className='w-full' type="text" value={username} onChange={e => setUsername(e.target.value)} />
+                            <input className='w-full px-1' type="text" value={username} onChange={e => setUsername(e.target.value)} />
                         </section>
                         <section className='py-2'>
                             <label className='text-end font-bold' htmlFor="password">Password</label>
-                            <input className='w-full' type="text" value={password} onChange={e => setPassword(e.target.value)} />
+                            <input className='w-full px-1' type="password" value={password} onChange={e => setPassword(e.target.value)} />
                         </section>
                         <div className='flex justify-between'>
                             <small className={`my-auto font-bold ${alertData?.status}`}>{alertData?.message}</small>

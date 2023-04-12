@@ -11,7 +11,7 @@ export default function Post({ post }: Props) {
     return (
         <div className='flex gap-1 pr-2 py-3 my-5 h-32 rounded drop-shadow-md bg-slate-50'>
             {/* image */}
-            <section className='relative w-1/4'>
+            <section className='relative w-1/4 p-1'>
                 <Image className='m-auto' priority src={post.image} fill={true} sizes='1' style={{ objectFit: 'contain' }} alt={`${post.title} book`} />
             </section>
 

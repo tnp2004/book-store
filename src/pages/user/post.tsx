@@ -2,15 +2,15 @@ import Layout from 'components/Layout'
 import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
 import { CommunityPost } from 'types/types'
-import Image from 'next/image'
 import Loader from 'components/Loader'
 import HistoryPost from 'components/HistoryPost'
+import Nopermission from 'components/Nopermission'
 
 type Props = {}
 
 export default function Post({ }: Props) {
 
-  const { data } = useSession()
+  const { data, status } = useSession()
   const [ownPosts, setOwnPosts] = useState<CommunityPost[]>([])
 
   useEffect(() => {
@@ -31,25 +31,30 @@ export default function Post({ }: Props) {
     getPost()
   })
 
-  if (ownPosts && ownPosts.length) {
-    return (
-      <Layout>
-        <div className='mx-auto text-center'>
-          <div className='w-1/2 mx-auto p-1 drop-shadow-md bg-slate-100 my-6'>
-            <label htmlFor="header" className='font-bold text-2xl'>My posts</label>
+  if (status === 'authenticated') {
+    if (ownPosts) {
+      return (
+        <Layout>
+          <div className='mx-auto text-center'>
+            <div className='sm:w-1/2 mx-auto p-1 drop-shadow-md bg-slate-100 my-6'>
+              <label htmlFor="header" className='font-bold text-2xl'>My posts</label>
 
-            <ul>
-              {ownPosts.map((post: CommunityPost, index: number) => (
-                <HistoryPost post={post} key={index} />
-              ))}
-            </ul>
+              <ul>
+                {ownPosts.map((post: CommunityPost, index: number) => (
+                  <HistoryPost post={post} key={index} />
+                ))}
+                {ownPosts.length === 0 && <li className='mt-5 text-slate-500'>Post not found</li>}
+              </ul>
+            </div>
+
           </div>
+        </Layout>
+      )
+    }
 
-        </div>
-      </Layout>
-    )
+    return <Loader />
   }
 
-  return <Loader />
+  return <Nopermission />
 
 }

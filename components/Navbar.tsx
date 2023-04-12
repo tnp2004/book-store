@@ -10,7 +10,7 @@ export default function Navbar({ }: Props) {
 
     return (
         <>
-            <nav className='flex justify-between p-3 mb-2 border-b-2 border-emerald-800/50 bg-emerald-600 drop-shadow-md sticky top-0 z-10'>
+            <nav className='flex justify-between p-3 mb-2 border-b-2 border-emerald-800/50 bg-emerald-600 drop-shadow-md md:sticky top-0 z-10'>
                 <div>
                     <Link href='/' className='font-bold text-slate-800 hover:text-emerald-900'>BOOKSTORE</Link>
                 </div>

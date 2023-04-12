@@ -11,10 +11,10 @@ export default function community({ data }: Props) {
 
     return (
         <Layout>
-            <div className='w-2/3 mx-auto'>
+            <div className='md:w-2/3 mx-auto p-1'>
                 <h1 className='text-2xl font-bold text-center my-5'>Community</h1>
 
-                <div className='w-2/3 mx-auto'>
+                <div className='lg:w-2/3 mx-auto'>
                     {data.map((post: CommunityPost, index: number) => (
                         <Post post={post} key={index} />
                     ))}

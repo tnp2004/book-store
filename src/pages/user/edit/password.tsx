@@ -30,6 +30,8 @@ export default function Password({ }: Props) {
                 })
             })).json()
 
+            if (responseData.status === 'ok') window.location.pathname = '/user'
+
             setAlertData(responseData)
 
         } catch {
@@ -45,11 +47,11 @@ export default function Password({ }: Props) {
                     <div className='mt-5'>
                         <section className='py-2'>
                             <label className='text-end font-bold' htmlFor="new_password">New password</label>
-                            <input className='w-full' type="text" value={newPassword} onChange={e => setNewPassword(e.target.value)} />
+                            <input className='w-full px-1' type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)} />
                         </section>
                         <section className='py-2'>
                             <label className='text-end font-bold' htmlFor="password">Password</label>
-                            <input className='w-full' type="text" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} />
+                            <input className='w-full px-1' type="password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} />
                         </section>
                         <div className='flex justify-between'>
                             <small className={`my-auto font-bold ${alertData?.status}`}>{alertData?.message}</small>
