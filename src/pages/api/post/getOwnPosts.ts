@@ -13,18 +13,11 @@ export default async function getOwnPosts(req: NextApiRequest, res: NextApiRespo
             .toArray()
 
 
-        if (posts.length !== 0) {
-            res.json(posts)
-            return
-        } 
+        res.json(posts)
 
-        res.json({
-            status: 'error',
-            message: 'Posts not found'
-        });
 
     } catch (e) {
-         res.json({
+        res.json({
             status: 'error',
             message: 'Something went wrong'
         });
