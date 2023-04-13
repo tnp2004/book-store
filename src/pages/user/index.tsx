@@ -49,7 +49,7 @@ export default function Index({ }: Props) {
     if (user && username && email && password) {
       return (
         <Layout>
-          <div className='my-10 mx-auto border-2 w-fit drop-shadow-sm p-5'>
+          <div className='my-10 mx-auto sm:border-2 w-fit drop-shadow-sm p-5'>
             <h1 className='text-3xl text-center font-bold tracking-widest'>Profile</h1>
             <hr />
             <Image priority src={cat_profile} className='mx-auto w-1/4' alt='profile' />

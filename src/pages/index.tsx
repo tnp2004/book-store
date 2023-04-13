@@ -1,18 +1,24 @@
 import React from 'react'
 import Layout from 'components/Layout'
-import { useSession } from 'next-auth/react'
 
 type Props = {}
 
 export default function Index({ }: Props) {
 
-  const { data } = useSession()
-
   return (
     <Layout>
-      <h1 className='text-rose-500 text-3xl'>Homepage</h1>
-      { data && <h2>welcome {data.user?.username}</h2>}
-      {JSON.stringify(data?.user)}
+      <div className='h-96 flex text-center p-2'>
+        <div className='m-auto'>
+          <h1 className='text-slate-900 text-6xl my-32'>Welcome to Bookstore</h1>
+          <div>
+            <q className='text-xl'>
+              <i>A reader lives a thousand lives before he dies, The man who never reads lives only one</i>
+            </q>
+            <br />
+            <b>George R.R. Martin</b>
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 } 
